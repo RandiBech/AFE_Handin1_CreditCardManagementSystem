@@ -1,21 +1,34 @@
-<h1>Transaction List</h1>
-<!-- Filters -->
-<!-- Add Transaction Button -->
 <div>
-    <li *ngFor="let transaction of transactions$ | async; index as i" (click)="onSelect(transaction)">
-        <!-- <a [routerLink]="[i]"> -->
-            <a routerLink="detail/{{transaction.uid}}">
-            <span>
-                Credit Card: {{transaction.credit_card.cardholder_name}}
-            </span>
-            <span>
+    <h1>Transaction List</h1>
+    <div><button (click)="onFilter()">Filter</button></div>
+    <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
+    <!-- Add Transaction Button -->
+    <div class="listbox" fxLayout="row" fxLayoutAlign="space-evenly center"
+        *ngFor="let transaction of transactions$ | async; index as i">
+        <div fxLayoutAlign="start start">
+            <p>
+                Name: {{transaction.credit_card.cardholder_name}}
+            </p>
+            <p>
                 Amount: {{transaction.amount}}
-            </span>
-            <span>
+            </p>
+            <p>
                 Currency: {{transaction.currency}}
-            </span>
-        </a>
-    </li>
+            </p>
+            <br>
+        </div>
+        <div fxLayoutAlign="end start">
+            <p>
+                Comment: {{transaction.comment}}
+            </p>
+            <p>
+                Date: {{transaction.date}}
+            </p>
+        </div>
+        <div fxLayout="column">
+            <button class="deleteBtn" (click)="OnDelete(transaction)">
+                <span class="deleteText">Delete</span>
+            </button>
+        </div>
+    </div>
 </div>
-
-<app-transaction-details [transaction]="selectedTransaction"></app-transaction-details>

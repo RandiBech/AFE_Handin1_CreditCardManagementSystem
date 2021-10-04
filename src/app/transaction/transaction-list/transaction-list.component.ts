@@ -1,6 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
 import { Card } from 'src/app/card-type';
@@ -16,14 +16,19 @@ export class TransactionListComponent implements OnInit {
   error = '';
   // transactions$: Observable<Transaction[]> | null = null;
 
-  constructor(private cardService: CreditCardService) {
+  constructor(private cardService: CreditCardService, private router: Router) {
     this.transactions$ = this.cardService.getTransactions();
     this.creditCards$ = this.cardService.getCards();
   }
 
-  selectedTransaction?: Transaction;
-  onSelect(transaction: Transaction): void {
-    this.selectedTransaction = transaction;
+  OnDelete(transaction: Transaction): void {
+    this.cardService.deleteTransaction(transaction).subscribe((_) => {
+      this.router.navigate(['/']);
+    });
+  }
+
+  onFilter(): void {
+    // TODO
   }
 
   ngOnInit(): void {
