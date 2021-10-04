@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+  margin: 0;
+  padding: 16px 10px;
+  width: fit-content;
+  cursor: pointer;
+  font-family: Tahoma, sans-serif;
+  color: white;
+  &:hover {
+    background-color: #5F9E9F;
+  }
+}
+.active-nav-item {
+  background-color: #5F9E9F;
+}
+
+.nav-bar {
+  background-color: #498787;
+  width: 100vw;
+  height: 50px;
+  top: 0;
+  left: 0;
+}
