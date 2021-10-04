@@ -2,10 +2,11 @@
 <!-- Filters -->
 <!-- Add Transaction Button -->
 <div>
-    <li  *ngFor="let transaction of transactions$ | async; index as i" >
-        <a [routerLink]="[i]">
+    <li *ngFor="let transaction of transactions$ | async; index as i" (click)="onSelect(transaction)">
+        <!-- <a [routerLink]="[i]"> -->
+            <a routerLink="detail/{{transaction.uid}}">
             <span>
-                Credit Card: {{transaction.credit_card.card_number}}
+                Credit Card: {{transaction.credit_card.cardholder_name}}
             </span>
             <span>
                 Amount: {{transaction.amount}}
@@ -17,12 +18,4 @@
     </li>
 </div>
 
-
-<div *ngIf="selectedTransaction">
-    <h2>{{selectedTransaction.credit_card.cardholder_name}}</h2>
-    <span>{{selectedTransaction.amount}}</span>
-    <span>{{selectedTransaction.currency}}</span>
-    <span>{{selectedTransaction.date}}</span>
-    <span>{{selectedTransaction.comment}}</span>
-
-</div>
+<app-transaction-details [transaction]="selectedTransaction"></app-transaction-details>

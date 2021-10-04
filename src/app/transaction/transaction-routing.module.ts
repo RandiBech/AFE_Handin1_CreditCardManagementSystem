@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TransactionListComponent
+  },
+  {
+    path:'detail/:id',
+    component: TransactionDetailsComponent
   }
 ];
 
