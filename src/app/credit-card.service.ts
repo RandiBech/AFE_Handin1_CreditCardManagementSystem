@@ -20,8 +20,9 @@ export class CreditCardService {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
 
-  deleteTransaction(transaction: Transaction): Observable<Transaction[]> {
+  deleteTransaction(uid: string): Observable<Transaction[]> {
+    console.log(uid);
     return this.http.delete<Transaction[]>(
-      `${this.rootUrl}/transactions/${transaction}`
+      `${this.rootUrl}/transactions/${uid}`
     );  }
 }

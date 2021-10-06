@@ -14,8 +14,6 @@ export class TransactionListComponent implements OnInit {
   
   creditCards$: Observable<Card[]>;
   transactions$: Observable<any[]>;
-  error = '';
-  // transactions$: Observable<Transaction[]> | null = null;
 
   constructor(private cardService: CreditCardService, private router: Router) {
     this.transactions$ = this.cardService.getTransactions();
@@ -23,8 +21,7 @@ export class TransactionListComponent implements OnInit {
   }
 
   OnDelete(transaction: Transaction): void {
-    console.log("Delete is called")
-    this.cardService.deleteTransaction(transaction).subscribe((_) => {
+    this.cardService.deleteTransaction(transaction.uid).subscribe((_) => {
       this.router.navigate(['/transaction']);
     });
   }

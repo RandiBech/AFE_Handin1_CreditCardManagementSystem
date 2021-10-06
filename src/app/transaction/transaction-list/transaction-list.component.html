@@ -1,33 +1,52 @@
-<div class="header">
+<h1>Transaction List</h1>
+
+<div class="overview-header" fxLayoutAlign="space-between center">
+    <button (click)="onFilter()">Filter</button>
+</div>
+<div class="overview-header">
     <div fxFlex="50">
-        <h1>Transaction List</h1>
-        <div><button (click)="onFilter()">Filter</button></div>
-        <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
-        <!-- Add Transaction Button -->
-        <div class="listbox" fxLayout="row" *ngFor="let transaction of transactions$ | async; index as i"
-            fxLayoutAlign="space-between center">
+
+
+
+        <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
+        <!-- Add Transaction Button -->
+
+        <div class="listbox" fxLayout="row" *ngFor="let transaction of
+            transactions$ | async; index as i" fxLayoutAlign="space-between center">
             <div>
-                <p>
-                    Name: {{transaction.credit_card.cardholder_name}}
-                </p>
-                <p>
-                    Amount: {{transaction.amount}} Currency: {{transaction.currency}}
-                </p>
-                <p>
-                    Comment: {{transaction.comment}}
-                </p>
-                <p>
-                    Date: {{transaction.date}}
-                </p>
+                <div>
+                    <span>
+                        Name: {{transaction.credit_card.cardholder_name}}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Amount: {{ transaction.amount}} {{transaction.currency}}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Comment: {{transaction.comment}}
+                    </span>
+
+                </div>
+                <div>
+                    <span>
+                        Date: {{transaction.date}}
+                    </span>
+                </div>
             </div>
-            <div fxLayoutAlign="space-evenly center">
+
+            <div fxLayoutAlign="space-evenly center" fxLayoutAlign="end end">
                 <button (click)="OnDelete(transaction)">
                     <span>X</span>
                 </button>
+
             </div>
+
         </div>
     </div>
-    <div fxFlex="50">
-
+    <div fxFlex="50" class="test">
+        INSERT ADD-FUNCTIONALITY
     </div>
 </div>
