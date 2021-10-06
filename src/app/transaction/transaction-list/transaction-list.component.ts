@@ -11,6 +11,7 @@ import { Card } from 'src/app/card-type';
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit {
+  
   creditCards$: Observable<Card[]>;
   transactions$: Observable<any[]>;
   error = '';
@@ -22,8 +23,9 @@ export class TransactionListComponent implements OnInit {
   }
 
   OnDelete(transaction: Transaction): void {
+    console.log("Delete is called")
     this.cardService.deleteTransaction(transaction).subscribe((_) => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/transaction']);
     });
   }
 
