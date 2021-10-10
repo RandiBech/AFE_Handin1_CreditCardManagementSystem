@@ -19,4 +19,8 @@ export class CreditCardService {
   getCards(): Observable<Card[]> {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
+
+  addCard(request: Card) {
+    return this.http.post(`${this.rootUrl}/credit_cards`, request);
+  }
 }
