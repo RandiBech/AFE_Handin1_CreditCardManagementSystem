@@ -63,22 +63,23 @@ export class CreditCardAddComponent implements OnInit {
     var year = group.get('expiration_date_year')?.value;
     var invalidMonth = month < 1 || month > 12;
     var invalidYear  = year < 1 || year > 31;
-    console.log(month, year)
+    console.log(month, year, typeof month)
 
     return invalidMonth || invalidYear ? {invalid_date: 'The date must be an existing date. Latest year: 31'} : null;
   }
 
-  onSubmit() {
-    console.log('submit', this.creditCardForm.value)
+  async onSubmit() {
     var request: Card = {
       card_number: this.creditCardForm.value.cardNumber,
       cardholder_name: this.creditCardForm.value.cardholder_name,
-      expiration_date_month: this.creditCardForm.value.expiration_date_month,
-      expiration_date_year: this.creditCardForm.value.expiration_date_year,
+      expiration_date_month: this.creditCardForm.value.expirationDate.expiration_date_month,
+      expiration_date_year: this.creditCardForm.value.expirationDate.expiration_date_year,
       csc_code: this.creditCardForm.value.cscCode,
       issuer: this.creditCardForm.value.issuer
     }
-    this.creditCardService.addCard(request);
+    console.log('submit', request)
+
+    await this.creditCardService.addCard(request);
   }
 
 }
