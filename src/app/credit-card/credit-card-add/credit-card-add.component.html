@@ -5,7 +5,7 @@
   <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
     <div fxLayout="column" fxLayoutAlign="space-between center">
       <div class="form-element">
-        <label>Cardholder's name:*</label>
+        <label>Cardholder's name:</label>
         <input type="text" formControlName="cardholder_name" class="form-input">
         <span
           *ngIf="creditCardFormControl.cardholder_name.touched && creditCardFormControl.cardholder_name.errors?.required"
