@@ -11,9 +11,6 @@ const routes: Routes = [{
   redirectTo: 'home',
   pathMatch: 'full'
 },{
-  path: 'creditcards',
-  loadChildren: () => import('./credit-card/credit-card.module').then(m => m.CreditCardModule)
-},{
   path: 'transaction',
   loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule),
 },{
