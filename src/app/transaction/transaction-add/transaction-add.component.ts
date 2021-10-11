@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { Observable } from 'rxjs';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
+import { TransactionService } from 'src/app/transaction.service';
 import { Card } from '../../card-type';
 
 @Component({
@@ -14,7 +15,10 @@ export class TransactionAddComponent implements OnInit {
 
   creditCards$: Observable<Card[]>;
 
-  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private creditCardService: CreditCardService,
+    private transactionService: TransactionService) {
     this.creditCards$ = creditCardService.getCards();
    }
 
@@ -42,8 +46,7 @@ export class TransactionAddComponent implements OnInit {
       date: unixDate,
       comment: this.transactionForm.value.comment
     }
-    console.log('transaction', request)
-    this.creditCardService.addTransaction(request);
+    this.transactionService.addTransaction(request).subscribe();
   }
 
 }

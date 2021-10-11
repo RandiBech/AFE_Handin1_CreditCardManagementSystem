@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
 import { Card } from 'src/app/card-type';
+import { TransactionService } from 'src/app/transaction.service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -16,8 +17,8 @@ export class TransactionListComponent implements OnInit {
   error = '';
   // transactions$: Observable<Transaction[]> | null = null;
 
-  constructor(private cardService: CreditCardService) {
-    this.transactions$ = this.cardService.getTransactions();
+  constructor(private cardService: CreditCardService, private transactionService: TransactionService) {
+    this.transactions$ = this.transactionService.getTransactions();
     this.creditCards$ = this.cardService.getCards();
   }
 
@@ -27,6 +28,6 @@ export class TransactionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.transactions$ = this.cardService.getTransactions();
+    this.transactions$ = this.transactionService.getTransactions();
   }
 }
