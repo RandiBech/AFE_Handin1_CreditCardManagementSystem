@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from './transaction-type';
 import { Card } from './card-type';
+import { find } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,10 @@ export class CreditCardService {
   }
   addCard(request: Card): Observable<Card> {
     return this.http.post<Card>(`${this.rootUrl}/credit_cards`, request);
+  }
+  
+  removeCard(cardNumber: string): void {
+    console.log('deleting card...'); 
+    this.http.delete<Card>(`${this.rootUrl}/credit_cards/${cardNumber}`); 
   }
 }

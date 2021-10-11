@@ -1,13 +1,11 @@
 <p>credit-card-list works!</p>
-<ng-container>
 	<ul>
 		<li *ngFor="let creditcard of creditcards$ |async; let i = index">
 			<div class="cards">
 				<a>Card number: </a>
-				<a routerLink=[i]>{{creditcard.card_number}}</a>
+				<a [routerLink]="['../creditcards', i]" [state]="creditcard">{{creditcard.card_number}}</a>
 				<p>Cardholder: {{creditcard.cardholder_name}}</p>
 				<p>Card issuer: {{creditcard.issuer}}</p>
 			</div>
 		</li>
 	</ul>
-</ng-container>
