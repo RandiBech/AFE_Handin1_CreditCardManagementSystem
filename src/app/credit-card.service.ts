@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from './transaction-type';
 import { Card } from './card-type';
+import { find } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,4 +20,5 @@ export class CreditCardService {
   getCards(): Observable<Card[]> {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
+
 }

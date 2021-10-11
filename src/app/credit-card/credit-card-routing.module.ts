@@ -5,7 +5,7 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
 
 const routes: Routes = [
   {path: '', component: CreditCardListComponent},
-  {path: ':id', component: CreditCardDetailsComponent}
+  {path: ':id', component: CreditCardDetailsComponent, data: {Card: 'some value'}}
 ];
 
 @NgModule({ 
