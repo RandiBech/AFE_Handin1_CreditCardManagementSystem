@@ -43,7 +43,7 @@ export class TransactionAddComponent implements OnInit {
       comment: this.transactionForm.value.comment
     }
     console.log('transaction', request)
-    this.creditCardService.addTransaction(request);
+    this.creditCardService.addTransaction(request).subscribe();
   }
 
 }

@@ -23,7 +23,6 @@
         </td>
         <td>
           <input type="text" formControlName="cardNumber" placeholder="0">
-          <!-- undefined i validering -->
           <div class="invalid-field" *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
             <div *ngIf="cardNumber.errors?.invalid_length">
               {{cardNumber.errors?.invalid_length}}

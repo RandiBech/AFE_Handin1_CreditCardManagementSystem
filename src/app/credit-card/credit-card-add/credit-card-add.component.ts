@@ -10,8 +10,6 @@ import { Card } from '../../card-type';
 })
 export class CreditCardAddComponent implements OnInit {
 
-  // creditCardForm: FormBuilder;
-
   constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService) { }
 
   ngOnInit(): void {
@@ -51,10 +49,8 @@ export class CreditCardAddComponent implements OnInit {
     return this.creditCardForm.get('cscCode') as FormControl;
   }
 
-  invalidCardNumber(group: FormControl): ValidationErrors | null {
-    //problem her med at value er undefined!!
-    var numberLength = group.get('cardNumber')?.value.length;
-    console.log('hej', numberLength < 7 && numberLength > 16, group.get('cardNumber')?.value)
+  invalidCardNumber(control: FormControl): ValidationErrors | null {
+    var numberLength = control.value.length;
     return numberLength < 7 || numberLength > 16 ? {invalid_length: 'The card number must be between 7 to 16 digits long'} : null;
   }
 
@@ -77,7 +73,7 @@ export class CreditCardAddComponent implements OnInit {
     }
     console.log('submit', request)
 
-    await this.creditCardService.addCard(request);
+    await this.creditCardService.addCard(request).subscribe();
   }
 
 }
