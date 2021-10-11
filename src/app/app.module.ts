@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { NagivationBarComponent } from './nagivation-bar/nagivation-bar.component';
 import { CreditCardListComponent } from './credit-card/credit-card-list/credit-card-list.component';
 import { CreditCardModule } from './credit-card/credit-card.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NagivationBarComponent,
+    PageNotFoundComponent,
 
   ],
   imports: [
