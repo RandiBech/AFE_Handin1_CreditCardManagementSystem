@@ -5,6 +5,7 @@ import { TransactionAddComponent } from './transaction-add/transaction-add.compo
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from 'src/app/transaction/transaction-list/filter.pipe';
+
 @NgModule({
   declarations: [TransactionAddComponent, TransactionListComponent, FilterPipe],
   imports: [

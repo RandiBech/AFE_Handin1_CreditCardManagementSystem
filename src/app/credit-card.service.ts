@@ -12,10 +12,6 @@ export class CreditCardService {
 
   constructor(private http: HttpClient) {}
 
-  getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.rootUrl}/transactions`);
-  }
-
   getCards(): Observable<Card[]> {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
@@ -24,5 +20,8 @@ export class CreditCardService {
     return this.http.delete<Transaction[]>(
       `${this.rootUrl}/transactions/${uid}`
     );
+  }
+  addCard(request: Card): Observable<Card> {
+    return this.http.post<Card>(`${this.rootUrl}/credit_cards`, request);
   }
 }

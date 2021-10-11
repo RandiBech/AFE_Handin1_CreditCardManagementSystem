@@ -5,6 +5,5 @@ export interface Transaction {
   amount: number;
   currency: string;
   comment: string;
-  date: string;
-  uid: string;
+  date: number;
 }
