@@ -3,7 +3,7 @@
 		<li *ngFor="let creditcard of creditcards$ |async; let i = index">
 			<div class="cards">
 				<a>Card number: </a>
-				<a [routerLink]="i+''" [state]="creditcard">{{creditcard.card_number}}</a>
+				<a [routerLink]="['../creditcards', i]" [state]="creditcard">{{creditcard.card_number}}</a>
 				<p>Cardholder: {{creditcard.cardholder_name}}</p>
 				<p>Card issuer: {{creditcard.issuer}}</p>
 			</div>

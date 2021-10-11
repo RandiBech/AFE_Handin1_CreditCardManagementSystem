@@ -14,15 +14,11 @@ export class CreditCardDetailsComponent implements OnInit, OnDestroy {
 
   creditCard!: Card;
   @Output() deleteRequest = new EventEmitter<Card>();
-  // paramMap$: Observable<ParamMap>
   sub!: Subscription;
-  // sub2!: Subscription
   
 
-  constructor(private creditCardService: CreditCardService, private route: ActivatedRoute) 
-  {
-
-  }
+  constructor(private route: ActivatedRoute) 
+  {  }
 
   ngOnInit(): void 
   {  

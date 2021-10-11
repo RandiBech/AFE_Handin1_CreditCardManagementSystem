@@ -30,4 +30,10 @@ export class CreditCardService {
     console.log('adding transaction...')
     return this.http.post<Transaction>(`${this.rootUrl}/transactions`, request);
   }
+
+
+  removeCard(cardNumber: string): void {
+    console.log('deleting card...'); 
+    this.http.delete<Card>(`${this.rootUrl}/credit_cards/${cardNumber}`); 
+  }
 }
