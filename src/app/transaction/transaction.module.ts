@@ -7,17 +7,12 @@ import { TransactionListComponent } from './transaction-list/transaction-list.co
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     TransactionAddComponent,
     TransactionListComponent,
-    TransactionDetailsComponent
+    TransactionDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    TransactionRoutingModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, TransactionRoutingModule, ReactiveFormsModule],
 })
-export class TransactionModule { }
+export class TransactionModule {}
