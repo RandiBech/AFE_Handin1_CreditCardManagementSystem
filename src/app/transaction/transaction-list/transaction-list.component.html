@@ -1,19 +1,25 @@
 <h1>Transaction List</h1>
 
 <div class="overview-header" fxLayoutAlign="space-between center">
-    <button (click)="onFilter()">Filter</button>
 </div>
+
 <div class="overview-header">
+    <div fxFlex="">
+        <h4>Names to search by </h4>
+        <div *ngFor="let card of creditCards$ | async">
+            {{card.cardholder_name}}
+        </div>
+    </div>
     <div fxFlex="50">
-
-
-
         <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
-        <!-- Add Transaction Button -->
-
+        <div class="form-group">
+            <label for="search-text">Search Text </label>
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+                [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+        </div>
         <div class="listbox" fxLayout="row" *ngFor="let transaction of
-            transactions$ | async; index as i" fxLayoutAlign="space-between center">
-            <div>
+            transactions$ | async| appFilter: searchText">
+            <div class="test">
                 <div>
                     <span>
                         Name: {{transaction.credit_card.cardholder_name}}
@@ -28,7 +34,6 @@
                     <span>
                         Comment: {{transaction.comment}}
                     </span>
-
                 </div>
                 <div>
                     <span>
@@ -37,16 +42,18 @@
                 </div>
             </div>
 
-            <div fxLayoutAlign="space-evenly center" fxLayoutAlign="end end">
-                <button (click)="OnDelete(transaction)">
-                    <span>X</span>
+            <div class="delete-header">
+                <button class="deleteBtn" (click)="OnDelete(transaction)">
+                    <span class="deleteText">Delete</span>
                 </button>
-
             </div>
 
         </div>
+
     </div>
-    <div fxFlex="50" class="test">
-        INSERT ADD-FUNCTIONALITY
+
+    <div fxFlex="50">
+        <!-- Add Transaction Button -->
+        <app-transaction-add></app-transaction-add>
     </div>
 </div>

@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
-import { Card } from 'src/app/card-type';
 
 @Component({
   selector: 'app-transaction-list',
@@ -11,9 +10,9 @@ import { Card } from 'src/app/card-type';
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit {
-  
-  creditCards$: Observable<Card[]>;
-  transactions$: Observable<any[]>;
+  searchText = '';
+  creditCards$: Observable<any[] | undefined>;
+  transactions$: Observable<Transaction[]>;
 
   constructor(private cardService: CreditCardService, private router: Router) {
     this.transactions$ = this.cardService.getTransactions();
@@ -24,10 +23,6 @@ export class TransactionListComponent implements OnInit {
     this.cardService.deleteTransaction(transaction.uid).subscribe((_) => {
       this.router.navigate(['/transaction']);
     });
-  }
-
-  onFilter(): void {
-    // TODO
   }
 
   ngOnInit(): void {

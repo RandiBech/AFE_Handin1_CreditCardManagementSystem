@@ -21,8 +21,8 @@ export class CreditCardService {
   }
 
   deleteTransaction(uid: string): Observable<Transaction[]> {
-    console.log(uid);
     return this.http.delete<Transaction[]>(
       `${this.rootUrl}/transactions/${uid}`
-    );  }
+    );
+  }
 }

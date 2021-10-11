@@ -8,7 +8,13 @@
 }
 
 .test {
-    background-color: bisque;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.delete-header {
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 .listbox {
     display: flex;
@@ -29,10 +35,10 @@
 }
 .deleteBtn {
     width: 28px;
-    height: 117px;
+    height: 50px;
     margin: 0 8px 0 16px;
     border-radius: 14px;
-    background-color: #b0cece;
+    background-color: #498787;
 }
 .deleteText {
     font-family: Lato;
