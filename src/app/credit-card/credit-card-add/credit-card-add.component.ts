@@ -62,7 +62,7 @@ export class CreditCardAddComponent implements OnInit {
     return invalidMonth || invalidYear ? {invalid_date: 'The date must be an existing date. Latest year: 31'} : null;
   }
 
-  async onSubmit() {
+  onSubmit() {
     var request: Card = {
       card_number: this.creditCardForm.value.cardNumber,
       cardholder_name: this.creditCardForm.value.cardholder_name,
@@ -71,9 +71,7 @@ export class CreditCardAddComponent implements OnInit {
       csc_code: this.creditCardForm.value.cscCode,
       issuer: this.creditCardForm.value.issuer
     }
-    console.log('submit', request)
-
-    await this.creditCardService.addCard(request).subscribe();
+    this.creditCardService.addCard(request).subscribe();
   }
 
 }
