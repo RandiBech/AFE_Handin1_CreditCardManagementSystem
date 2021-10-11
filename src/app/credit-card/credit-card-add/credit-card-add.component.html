@@ -1,1 +1,84 @@
-<p>credit-card-add works!</p>
+<div class="page">
+  <h2>Add a credit card:</h2>
+  <!--Inspiration from course slides + examples (lesson 4) and https://www.freecodecamp.org/news/how-to-validate-angular-reactive-forms/-->
+
+  <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+    <table>
+      <tr class="form-element">
+        <td>
+          <label>Cardholder's name:</label>
+        </td>
+        <td>
+          <input type="text" formControlName="cardholder_name">
+          <div
+            *ngIf="creditCardFormControl.cardholder_name.touched && creditCardFormControl.cardholder_name.errors?.required"
+            class="invalid-field">
+            The name is required!
+          </div>
+        </td>
+      </tr>
+      <tr class="form-element">
+        <td>
+          <label>Card number:</label>
+        </td>
+        <td>
+          <input type="text" formControlName="cardNumber" placeholder="0">
+          <!-- undefined i validering -->
+          <div class="invalid-field" *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+            <div *ngIf="cardNumber.errors?.invalid_length">
+              {{cardNumber.errors?.invalid_length}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="form-element">
+        <td>
+          <label>Expiration date:</label>
+        </td>
+        <td formGroupName="expirationDate">
+          <input type="number" formControlName="expiration_date_month" class="date-field">
+          /
+          <input type="number" formControlName="expiration_date_year" class="date-field">
+          <div class="invalid-field" *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched)">
+            <div *ngIf="expirationDate.errors?.invalid_date">
+              {{expirationDate.errors?.invalid_date}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="form-element">
+        <td>
+          <label>CSC code:</label>
+        </td>
+        <td>
+          <input type="text" formControlName="cscCode">
+          <div *ngIf="cscCode.invalid && (cscCode.touched || cscCode.dirty)" class="invalid-field">
+            <div *ngIf="cscCode.errors?.required">
+              This field is required
+            </div>
+            <div *ngIf="cscCode.errors?.pattern">
+              The csc code must be numbers
+            </div>
+            <div *ngIf="cscCode.errors?.minlength || cscCode.errors?.maxlength">
+              The csc code must be three digits long
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="form-element">
+        <td>
+          <label>Issuer:</label>
+        </td>
+        <td>
+          <input type="text" formControlName="issuer" >
+        </td>
+      </tr>
+      <tr class="form-element">
+        <td></td>
+        <td>
+          <button type="submit" class="submit-btn" [disabled]="creditCardForm.invalid">Submit credit card</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

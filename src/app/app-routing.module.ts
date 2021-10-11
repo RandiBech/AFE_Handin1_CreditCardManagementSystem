@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [{
@@ -11,14 +12,15 @@ const routes: Routes = [{
   redirectTo: 'home',
   pathMatch: 'full'
 },{
-  path: 'creditcards',
-  loadChildren: () => import('./credit-card/credit-card.module').then(m => m.CreditCardModule)
-},{
   path: 'transaction',
   loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule),
 },{
-  path: 'addCreditCard',
+  path: 'creditcards',
   loadChildren: () => import('./credit-card/credit-card.module').then(m => m.CreditCardModule),
+},
+{
+  path: '**',
+  component: PageNotFoundComponent
 }];
 
 @NgModule({

@@ -1,1 +1,67 @@
-<p>transaction-add works!</p>
+<div>
+  <h2>Add a transaction to a credit card:</h2>
+  <div>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <table >
+        <tr class="form-element">
+          <td>
+            <label>Credit card:</label>
+          </td>
+          <td>
+            <select name="creditCard" formControlName="credit_card">
+              <option *ngFor="let creditCard of creditCards$ | async" [ngValue]="creditCard">
+                {{creditCard.cardholder_name}} {{creditCard.card_number}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="form-element">
+          <td>
+            <label>Amount:</label>
+          </td>
+          <td>
+            <input type="number" formControlName="amount" placeholder="0">
+            <div *ngIf="transactionFormControl.amount.touched && transactionFormControl.amount.invalid" class="invalid-field">
+              The amount is required
+            </div>
+          </td>
+        </tr>
+        <tr class="form-element">
+          <td>
+            <label>Currency:</label>
+          </td>
+          <td>
+            <input type="text" formControlName="currency" placeholder="e.g.: USD">
+            <div *ngIf="transactionFormControl.currency.touched && transactionFormControl.currency.invalid" class="invalid-field">
+              The currency is required
+            </div>
+          </td>
+        </tr>
+        <tr class="form-element">
+          <td>
+            <label>Date:</label>
+          </td>
+          <td>
+            <input type="date" formControlName="date">
+            <div *ngIf="transactionFormControl.date.touched && transactionFormControl.date.invalid" class="invalid-field">
+              The date is required
+            </div>
+          </td>
+        </tr>
+        <tr class="form-element">
+          <td>
+            <label>Comment:</label>
+          </td>
+          <td>
+            <textarea formControlName="comment" class="comment-input"></textarea>
+          </td>
+        </tr>
+        <tr class="form-element">
+          <td></td>
+          <td>
+            <button type="submit" class="submit-btn" [disabled]="transactionForm.invalid">Submit credit card</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

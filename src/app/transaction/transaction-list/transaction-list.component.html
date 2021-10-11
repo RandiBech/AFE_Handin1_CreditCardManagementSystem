@@ -1,6 +1,9 @@
 <h1>Transaction List</h1>
 <!-- Filters -->
 <!-- Add Transaction Button -->
+
+<app-transaction-add></app-transaction-add>
+
 <div>
     <li  *ngFor="let transaction of transactions$ | async; index as i" >
         <a [routerLink]="[i]">

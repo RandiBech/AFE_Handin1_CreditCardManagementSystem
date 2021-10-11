@@ -5,6 +5,7 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 import { TransactionAddComponent } from './transaction-add/transaction-add.component';
 import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TransactionDetailsComponent } from './transaction-details/transaction-d
   ],
   imports: [
     CommonModule,
-    TransactionRoutingModule
+    TransactionRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class TransactionModule { }
