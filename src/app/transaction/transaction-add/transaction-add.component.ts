@@ -14,7 +14,7 @@ export class TransactionAddComponent implements OnInit {
 
   creditCards$: Observable<Card[]>;
 
-  constructor(private formBuilder: FormBuilder, creditCardService: CreditCardService) {
+  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService) {
     this.creditCards$ = creditCardService.getCards();
    }
 
@@ -23,7 +23,7 @@ export class TransactionAddComponent implements OnInit {
 
   transactionForm = this.formBuilder.group({
     credit_card: [null],
-    amount: [0, Validators.required],
+    amount: ['', Validators.required],
     currency: ['', Validators.required],
     comment: [''],
     date: ['', Validators.required]
@@ -43,6 +43,7 @@ export class TransactionAddComponent implements OnInit {
       comment: this.transactionForm.value.comment
     }
     console.log('transaction', request)
+    this.creditCardService.addTransaction(request);
   }
 
 }

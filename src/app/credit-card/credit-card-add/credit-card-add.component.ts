@@ -63,8 +63,6 @@ export class CreditCardAddComponent implements OnInit {
     var year = group.get('expiration_date_year')?.value;
     var invalidMonth = month < 1 || month > 12;
     var invalidYear  = year < 1 || year > 31;
-    console.log(month, year, typeof month)
-
     return invalidMonth || invalidYear ? {invalid_date: 'The date must be an existing date. Latest year: 31'} : null;
   }
 

@@ -2,3 +2,22 @@
 body {
   margin: 0 !important;
 }
+.submit-btn {
+  background-color: #498787;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  padding: 12px 16px;
+  color: white;
+  margin-top: 16px;
+  border-radius: 16px;
+  border:none;
+  &:disabled {
+    color:grey;
+    background-color: #5F9E9F;
+    cursor: not-allowed;
+  }
+  &:hover{
+    background-color: #5F9E9F;
+  }
+}

@@ -4,6 +4,7 @@
 .invalid-field {
   color: red;
   font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
 }
 h2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -11,31 +12,13 @@ h2 {
 }
 .date-field {
   width: 35px;
-  margin: 0 4px;
 }
 .form-element {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14pt;
-  margin: 4px 0;
-}
-.form-input {
-  margin-left: 4px;
-}
-.submit-btn {
-  background-color: #498787;
-  cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
-  padding: 4px;
-  color: white;
-  &:disabled {
-    color:grey;
-    background-color: #5F9E9F;
-    cursor: not-allowed;
-  }
-  &:hover{
-    background-color: #5F9E9F;
-  }
-
+  vertical-align: top;
+}
+table {
+  border-spacing: 0 12px;
 }
 
