@@ -17,17 +17,15 @@ export class CreditCardService {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
 
-  deleteTransaction(uid: string): Observable<Transaction[]> {
-    return this.http.delete<Transaction[]>(
-      `${this.rootUrl}/transactions/${uid}`
-    );
+  deleteTransaction(uid: string): Observable<any> {
+    return this.http.delete<any>(`${this.rootUrl}/transactions/${uid}`);
   }
   addCard(request: Card): Observable<Card> {
     return this.http.post<Card>(`${this.rootUrl}/credit_cards`, request);
   }
-  
+
   removeCard(cardNumber: string): void {
-    console.log('deleting card...'); 
-    this.http.delete<Card>(`${this.rootUrl}/credit_cards/${cardNumber}`); 
+    console.log('deleting card...');
+    this.http.delete<Card>(`${this.rootUrl}/credit_cards/${cardNumber}`);
   }
 }
