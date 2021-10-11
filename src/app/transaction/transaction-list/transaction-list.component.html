@@ -1,17 +1,18 @@
-<h1>Transaction List</h1>
+<h1>Transaction Overview</h1>
 
 <div class="overview-header" fxLayoutAlign="space-between center">
 </div>
 
 <div class="overview-header">
     <div fxFlex="">
-        <h4>Names to search by </h4>
+        <h2 class="search-text">Names to search by </h2>
         <div *ngFor="let card of creditCards$ | async">
             {{card.cardholder_name}}
         </div>
     </div>
     <div fxFlex="50">
         <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
+        <h2 class="search-text">Transaction List</h2>
         <div class="form-group">
             <label for="search-text">Search Text </label>
             <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
