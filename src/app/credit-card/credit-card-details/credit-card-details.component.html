@@ -1,8 +1,16 @@
-<p>credit-card-details page</p>
-<h2>Card Number: {{creditCard.card_number}}</h2>
-<div>
-     <p>Card Holder: {{creditCard.cardholder_name}}</p>
-     <p>csc code: {{creditCard.csc_code}}</p> 
-     <p>expiration date: {{creditCard.expiration_date_month}}/{{creditCard.expiration_date_year}}</p>
-     <p>Card issuer: {{creditCard.issuer}}</p>
+<div class="overview-header" fxLayout="row" fxLayoutAlign="space-around center">
+     <div fxFlex=50>
+          <p>credit-card-details page</p>
+          <h2>Card Number: {{creditCard.card_number}}</h2>
+          <div>
+               <p>Card Holder: {{creditCard.cardholder_name}}</p>
+               <p>csc code: {{creditCard.csc_code}}</p>
+               <p>expiration date: {{creditCard.expiration_date_month}}/{{creditCard.expiration_date_year}}</p>
+               <p>Card issuer: {{creditCard.issuer}}</p>
+          </div>
+     </div>
+
+     <div fxFlex=50>
+          <app-transaction-list [card]="creditCard"></app-transaction-list>
+     </div>
 </div>
