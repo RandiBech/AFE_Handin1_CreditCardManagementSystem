@@ -5,7 +5,6 @@ import { Transaction } from 'src/app/transaction-type';
 
 @Pipe({ name: 'appFilter' })
 
-// Virker
 export class FilterPipe implements PipeTransform {
   transform(items: Transaction[] | null, name: string): Transaction[] {
     if (!items) {

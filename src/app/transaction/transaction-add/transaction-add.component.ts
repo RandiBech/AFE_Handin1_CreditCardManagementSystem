@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
@@ -26,7 +19,7 @@ export class TransactionAddComponent implements OnInit {
     private creditCardService: CreditCardService,
     private transactionService: TransactionService
   ) {
-    this.creditCards$ = creditCardService.getCards();
+    this.creditCards$ = this.creditCardService.getCards();
   }
 
   ngOnInit(): void {}

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Transaction } from './transaction-type';
 import { Card } from './card-type';
-import { catchError, find } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,22 +16,19 @@ export class CreditCardService {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
 
-  deleteTransaction(uid: string): Observable<any> {
-    return this.http.delete<any>(`${this.rootUrl}/transactions/${uid}`);
-  }
   addCard(request: Card): Observable<Card> {
     return this.http.post<Card>(`${this.rootUrl}/credit_cards`, request);
   }
-  
+
   removeCard(request: Card): Observable<unknown> {
-    console.log('deleting card...'); 
+    console.log('deleting card...');
     const options = {
       params: new HttpParams().set('card_number', request.card_number )
-    }; 
+    };
 
     return this.http.delete<Card>(`${this.rootUrl}/credit_cards/${request.card_number}`, options).pipe(
       catchError(this.handleError)
-    ); 
+    );
   }
 
 

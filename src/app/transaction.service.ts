@@ -18,4 +18,8 @@ export class TransactionService {
   addTransaction(request: Transaction): Observable<Transaction> {
     return this.http.post<Transaction>(`${this.rootUrl}/transactions`, request);
   }
+
+  deleteTransaction(uid: string): Observable<any> {
+    return this.http.delete<any>(`${this.rootUrl}/transactions/${uid}`);
+  }
 }

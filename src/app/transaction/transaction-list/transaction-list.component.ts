@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
-import { Card } from 'src/app/card-type';
 import { TransactionService } from 'src/app/transaction.service';
 
 @Component({
@@ -26,7 +25,7 @@ export class TransactionListComponent implements OnInit {
   }
 
   OnDelete(transaction: Transaction): void {
-    this.cardService.deleteTransaction(transaction.uid).subscribe((_) => {
+    this.transactionService.deleteTransaction(transaction.uid).subscribe((_) => {
       this.router.navigate(['/transaction']);
     });
   }
