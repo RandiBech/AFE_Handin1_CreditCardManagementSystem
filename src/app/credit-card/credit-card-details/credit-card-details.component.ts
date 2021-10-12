@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, ParamMap , Router} from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { CreditCardService } from 'src/app/credit-card.service';
 import {Card} from 'src/app/card-type';
+import { Transaction } from 'src/app/transaction-type';
+import { TransactionService } from 'src/app/transaction.service';
 
 @Component({
   selector: 'app-credit-card-details',
@@ -12,13 +14,16 @@ import {Card} from 'src/app/card-type';
 })
 export class CreditCardDetailsComponent implements OnInit, OnDestroy {
 
-  creditCard!: Card;
+  @Input() creditCard!: Card;
   @Output() deleteRequest = new EventEmitter<Card>();
   sub!: Subscription;
+  Transactions$: Observable<Transaction[]>;
   
 
-  constructor(private route: ActivatedRoute) 
-  {  }
+  constructor(private route: ActivatedRoute, private creditCardService: CreditCardService, private transactionService: TransactionService ) 
+  {  
+    this.Transactions$ = this.transactionService.getTransactions(); 
+  }
 
   ngOnInit(): void 
   {  
@@ -35,7 +40,14 @@ export class CreditCardDetailsComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  public getCard(): void {
+  getCard(): void {
     this.creditCard = history.state;
+  }
+
+  deleteCard(): void {
+    console.log('delete card request');
+    // this.deleteRequest.emit(this.creditCard);
+    this.creditCardService.removeCard(this.creditCard).subscribe(); // does not work
+    console.log('card deleted');
   }
 }
