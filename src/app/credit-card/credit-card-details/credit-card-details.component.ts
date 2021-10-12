@@ -1,15 +1,13 @@
 import {
   Component,
   EventEmitter,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Card } from 'src/app/card-type';
 import { Transaction } from 'src/app/transaction-type';
