@@ -36,7 +36,7 @@ export class CreditCardDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sub = this.route.paramMap.subscribe((params) => {
+    this.sub = this.route.paramMap.subscribe(() => {
       this.getCard();
     });
 
