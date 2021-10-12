@@ -10,13 +10,18 @@ import { Card} from '../../card-type';
   styleUrls: ['./credit-card-list.component.scss']
 })
 export class CreditCardListComponent implements OnInit {
-  
+
+  mobileView = false;
   creditcards$: Observable<Card[]>;
-  constructor(private service: CreditCardService) { 
+  constructor(private service: CreditCardService) {
     this.creditcards$ = service.getCards();
   }
 
   ngOnInit(): void {
+    //inspiration: https://stackoverflow.com/questions/47034573/ngif-hide-some-content-on-mobile-screen-angular-4/50845587
+    if (window.screen.width === 360) {
+      this.mobileView = true;
+    }
   }
 
 }
