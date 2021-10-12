@@ -17,6 +17,9 @@ export class CreditCardService {
     return this.http.get<Card[]>(`${this.rootUrl}/credit_cards`);
   }
 
+  deleteTransaction(uid: string): Observable<any> {
+    return this.http.delete<any>(`${this.rootUrl}/transactions/${uid}`);
+  }
   addCard(request: Card): Observable<Card> {
     return this.http.post<Card>(`${this.rootUrl}/credit_cards`, request);
   }

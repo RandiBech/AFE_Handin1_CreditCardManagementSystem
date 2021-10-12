@@ -1,6 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 import { CreditCardService } from 'src/app/credit-card.service';
 import { Transaction } from 'src/app/transaction-type';
 import { Card } from 'src/app/card-type';
@@ -12,19 +12,23 @@ import { TransactionService } from 'src/app/transaction.service';
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit {
-  creditCards$: Observable<Card[]>;
-  transactions$: Observable<any[]>;
-  error = '';
-  // transactions$: Observable<Transaction[]> | null = null;
+  searchText = '';
+  creditCards$: Observable<any[] | undefined>;
+  transactions$: Observable<Transaction[]>;
 
-  constructor(private cardService: CreditCardService, private transactionService: TransactionService) {
+  constructor(
+    private router: Router,
+    private cardService: CreditCardService,
+    private transactionService: TransactionService
+  ) {
     this.transactions$ = this.transactionService.getTransactions();
     this.creditCards$ = this.cardService.getCards();
   }
 
-  selectedTransaction?: Transaction;
-  onSelect(transaction: Transaction): void {
-    this.selectedTransaction = transaction;
+  OnDelete(transaction: Transaction): void {
+    this.cardService.deleteTransaction(transaction.uid).subscribe((_) => {
+      this.router.navigate(['/transaction']);
+    });
   }
 
   ngOnInit(): void {
