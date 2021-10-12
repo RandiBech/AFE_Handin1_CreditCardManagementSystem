@@ -1,0 +1,59 @@
+.overview-header {
+    display: flex;
+    justify-content: space-evenly;
+}
+.search-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+}
+
+.header {
+    width: 100px;
+}
+
+.test {
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.delete-header {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.listbox {
+    display: flex;
+    padding: 10px;
+    color: white;
+    margin: 10px 10px 10px 10px;
+    border-radius: 4px;
+    background-color: #b0cece;
+    font-size: small;
+}
+.delete-button-header {
+    align-content: flex-end;
+}
+.delete {
+    width: 1440px;
+    height: 1024px;
+    background-color: #fdfdfd;
+}
+.deleteBtn {
+    width: 28px;
+    height: 50px;
+    margin: 0 8px 0 16px;
+    border-radius: 14px;
+    background-color: #498787;
+}
+.deleteText {
+    font-family: Lato;
+    font-size: 12px;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: white;
+}

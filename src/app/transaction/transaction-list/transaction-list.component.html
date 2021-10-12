@@ -1,31 +1,60 @@
-<h1>Transaction List</h1>
-<!-- Filters -->
-<!-- Add Transaction Button -->
+<h1>Transaction Overview</h1>
 
-<app-transaction-add></app-transaction-add>
-
-<div>
-    <li  *ngFor="let transaction of transactions$ | async; index as i" >
-        <a [routerLink]="[i]">
-            <span>
-                Credit Card: {{transaction.credit_card.card_number}}
-            </span>
-            <span>
-                Amount: {{transaction.amount}}
-            </span>
-            <span>
-                Currency: {{transaction.currency}}
-            </span>
-        </a>
-    </li>
+<div class="overview-header" fxLayoutAlign="space-between center">
 </div>
 
+<div class="overview-header">
+    <div fxFlex="">
+        <h2 class="search-text">Names to search by </h2>
+        <div *ngFor="let card of creditCards$ | async">
+            {{card.cardholder_name}}
+        </div>
+    </div>
+    <div fxFlex="50">
+        <!-- Filters: F6.1.4 Transactions must be filtered based on credit_card -->
+        <h2 class="search-text">Transaction List</h2>
+        <div class="form-group">
+            <label for="search-text">Search Text </label>
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+                [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+        </div>
+        <div class="listbox" fxLayout="row" *ngFor="let transaction of
+            transactions$ | async| appFilter: searchText">
+            <div class="test">
+                <div>
+                    <span>
+                        Name: {{transaction.credit_card.cardholder_name}}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Amount: {{ transaction.amount}} {{transaction.currency}}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Comment: {{transaction.comment}}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Date: {{transaction.date}}
+                    </span>
+                </div>
+            </div>
 
-<div *ngIf="selectedTransaction">
-    <h2>{{selectedTransaction.credit_card.cardholder_name}}</h2>
-    <span>{{selectedTransaction.amount}}</span>
-    <span>{{selectedTransaction.currency}}</span>
-    <span>{{selectedTransaction.date}}</span>
-    <span>{{selectedTransaction.comment}}</span>
+            <div class="delete-header">
+                <button class="deleteBtn" (click)="OnDelete(transaction)">
+                    <span class="deleteText">Delete</span>
+                </button>
+            </div>
 
+        </div>
+
+    </div>
+
+    <div fxFlex="50">
+        <!-- Add Transaction Button -->
+        <app-transaction-add></app-transaction-add>
+    </div>
 </div>
