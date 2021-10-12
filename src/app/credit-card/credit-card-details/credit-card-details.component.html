@@ -1,38 +1,46 @@
-<div class="page">
-  <h2>Card Number: {{creditCard.card_number}}</h2>
-  <table>
-    <tr>
-      <td>
-        <p>Card Holder:</p>
-      </td>
-      <td>
-        <p>{{creditCard.cardholder_name}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>csc code:</p>
-      </td>
-      <td>
-        <p >{{creditCard.csc_code}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Expiration date:</p>
-      </td>
-      <td>
-        <p>{{creditCard.expiration_date_month}}/{{creditCard.expiration_date_year}}</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Card issuer::</p>
-      </td>
-      <td>
-        <p>{{creditCard.issuer}}</p>
-      </td>
-    </tr>
-  </table>
-     <button class="delete-btn" (click)="deleteCard()">Delete Card</button>
+<div class="overview-header" fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxFlex=50>
+    <div class="page">
+      <h2>Card Number: {{creditCard.card_number}}</h2>
+      <table>
+        <tr>
+          <td>
+            <p>Card Holder:</p>
+          </td>
+          <td>
+            <p>{{creditCard.cardholder_name}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>csc code:</p>
+          </td>
+          <td>
+            <p>{{creditCard.csc_code}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Expiration date:</p>
+          </td>
+          <td>
+            <p>{{creditCard.expiration_date_month}}/{{creditCard.expiration_date_year}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Card issuer::</p>
+          </td>
+          <td>
+            <p>{{creditCard.issuer}}</p>
+          </td>
+        </tr>
+      </table>
+      <button class="delete-btn" (click)="deleteCard()">Delete Card</button>
+    </div>
+  </div>
+
+  <div fxFlex=50>
+    <app-transaction-list [card]="creditCard"></app-transaction-list>
+  </div>
 </div>

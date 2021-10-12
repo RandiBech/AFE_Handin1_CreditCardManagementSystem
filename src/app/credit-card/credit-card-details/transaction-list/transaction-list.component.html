@@ -1,0 +1,11 @@
+<div fxFlex=50>
+    <h2>Transaction List</h2>
+    <div fxLayoutAlign="space-around center" fxLayout="row">
+        <div class="list" *ngFor="let trans of transactions$ | async |creditCardFilter: this.card.card_number">
+            <!-- Name: {{trans.credit_card.cardholder_name}} -->
+            Amount: {{trans.amount}} {{trans.currency}}
+            Date: {{trans.date}}
+            Comment: {{trans.comment}}
+        </div>
+    </div>
+</div>

@@ -1,37 +1,45 @@
-import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, ParamMap , Router} from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { CreditCardService } from 'src/app/credit-card.service';
-import {Card} from 'src/app/card-type';
+import { Card } from 'src/app/card-type';
 import { Transaction } from 'src/app/transaction-type';
 import { TransactionService } from 'src/app/transaction.service';
 
 @Component({
   selector: 'app-credit-card-details',
   templateUrl: './credit-card-details.component.html',
-  styleUrls: ['./credit-card-details.component.scss']
+  styleUrls: ['./credit-card-details.component.scss'],
 })
 export class CreditCardDetailsComponent implements OnInit, OnDestroy {
-
   @Input() creditCard!: Card;
   @Output() deleteRequest = new EventEmitter<Card>();
   sub!: Subscription;
   Transactions$: Observable<Transaction[]>;
-  
 
-  constructor(private route: ActivatedRoute, private creditCardService: CreditCardService, private transactionService: TransactionService ) 
-  {  
-    this.Transactions$ = this.transactionService.getTransactions(); 
+  constructor(
+    private route: ActivatedRoute,
+    private creditCardService: CreditCardService,
+    private transactionService: TransactionService
+  ) {
+    this.Transactions$ = this.transactionService.getTransactions();
   }
 
-  ngOnInit(): void 
-  {  
-    this.sub = this.route.paramMap.subscribe(params => {
+  ngOnInit(): void {
+    this.sub = this.route.paramMap.subscribe((params) => {
       let id = params.get('id');
       this.getCard();
-    }); 
-    
+    });
+
     console.log('state', history.state);
     console.log('creditcard: ', this.creditCard);
   }

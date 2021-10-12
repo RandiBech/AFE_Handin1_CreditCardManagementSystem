@@ -6,13 +6,17 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
 import { CreditCardDetailsComponent } from './credit-card-details/credit-card-details.component';
 import { CreditCardAddComponent } from './credit-card-add/credit-card-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreditCardFilterPipe } from './credit-card-filter.pipe';
+import { TransactionListComponent } from './credit-card-details/transaction-list/transaction-list.component';
 
 
 @NgModule({
   declarations: [
     CreditCardListComponent,
     CreditCardDetailsComponent,
-    CreditCardAddComponent
+    CreditCardAddComponent,
+    CreditCardFilterPipe,
+    TransactionListComponent
   ],
   imports: [
     CommonModule,

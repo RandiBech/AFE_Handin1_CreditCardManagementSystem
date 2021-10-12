@@ -1,4 +1,4 @@
-//Reference: https://dev.to/idrisrampurawala/creating-a-search-filter-in-angular-562d
+//inspiration: https://dev.to/idrisrampurawala/creating-a-search-filter-in-angular-562d + slides from course
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { Transaction } from 'src/app/transaction-type';
