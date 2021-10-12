@@ -29,19 +29,17 @@ export class CreditCardDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private creditCardService: CreditCardService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private navigationRouter: Router
   ) {
     this.Transactions$ = this.transactionService.getTransactions();
   }
 
   ngOnInit(): void {
     this.sub = this.route.paramMap.subscribe((params) => {
-      let id = params.get('id');
       this.getCard();
     });
 
-    console.log('state', history.state);
-    console.log('creditcard: ', this.creditCard);
   }
 
   ngOnDestroy(): void {
@@ -53,9 +51,7 @@ export class CreditCardDetailsComponent implements OnInit, OnDestroy {
   }
 
   deleteCard(): void {
-    console.log('delete card request');
-    // this.deleteRequest.emit(this.creditCard);
-    this.creditCardService.removeCard(this.creditCard).subscribe(); // does not work
-    console.log('card deleted');
+    this.creditCardService.removeCard(this.creditCard).subscribe();
+    this.navigationRouter.navigateByUrl('/home');
   }
 }
